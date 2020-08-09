@@ -6,6 +6,7 @@ public class CampingListController {
     }
     @auraenabled
     public static Camping_Item__c saveItem (Camping_Item__c item){
+        System.debug('test');
         insert item;
         return item;
     }
