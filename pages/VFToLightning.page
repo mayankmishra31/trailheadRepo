@@ -1,0 +1,291 @@
+<apex:page standardController="Account"  sidebar="false" standardStylesheets="false" showHeader="false" applyHtmlTag="false" >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:stylesheet value="{!URLFOR($Resource.SLDS, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+                <script src='js/jquery-sortable.js'></script>
+                <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"/>
+                <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+                 
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet"/>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+                <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+                <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+                 
+                </head>
+                <!-- jquery Date Picker --->
+                <script type="text/javascript">
+                $(function(){
+                 
+                var date = new Date();
+                var currentMonth = date.getMonth();
+                var currentDate = date.getDate();
+                var currentYear = date.getFullYear();
+                 
+                $('[id$=myPicker]').datepicker({
+                minDate: new Date(currentYear, currentMonth, currentDate),
+                dateFormat: 'dd/mm/yy'
+                });
+                });
+                 
+                 
+            </script>
+            <!---- End Of Date Picker --->
+        <body class="container">
+            <apex:form >
+                <apex:pageBlock >
+                    <!-- REQUIRED SLDS WRAPPER -->
+                    <div class="slds">
+                        <!----------------Header----------------->
+                        <center>
+                            <br/>
+                            <div class="slds-p-horizontal--small slds-size--1-of-1" style="font-size:24px;">
+                                Create Account
+                            </div>
+                        </center>
+                        <hr/>
+                        <!-------------End------------------>
+                        <!-------ACCOUNT FEILDS------------>
+                        <div class="slds-box slds-box--small slds-theme--shade slds-text-align--left">Account Information</div>
+                        <br/>
+                        <div class="slds-grid">
+                            <div class="slds-col" style="width:90%;">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Account Owner</label>
+                                    <div class="slds-form-element__control">
+                                        {!$User.FirstName} {!$User.LastName}
+                                    </div>
+                                </div>
+                                &nbsp;
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Account Name</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Name}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Account Number</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.AccountNumber}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Account Site</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Site}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Type</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Type}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Industry</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Industry}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Annual Revenue</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.AnnualRevenue}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Source</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.AccountSource}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="slds-col" style="width:90%;">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Rating</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.rating}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Phone</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.phone}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Fax</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.fax}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Website</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.website}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Ticker Symbol</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.TickerSymbol}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Ownership</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Ownership}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Employees</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.NumberOfEmployees}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">SIC Code</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Sic}" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Customer Priority</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.CustomerPriority__c}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element" id="myPickerWrapper">
+                                    <label class="slds-form-element__label" for="text-input-01">SLA Expiration Date</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-input-has-icon slds-input-has-icon--right">
+                                           
+                                            <apex:inputField value="{!account.SLAExpirationDate__c}" showDatePicker="false" styleClass="slds-input" id="myPicker"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Active</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.Active__c}" styleClass="slds-select"/>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                        <div class="slds-box slds-box--small slds-theme--shade slds-text-align--left">Address Information</div>
+                        <br/>
+                        <div class="slds-grid">
+                            <div class="slds-col" style="width:90%;">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Shipping Street</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.ShippingStreet}" id="shippingStreet" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Shipping City</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.ShippingCity}" id="shippingCity" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Shipping State/Province</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.ShippingState}" id="shippingState" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Shipping Zip/Postal Code</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.ShippingPostalCode}" id="shippingPostalCode" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Shipping Country</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.ShippingCountry}" id="shippingCountry" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="slds-col" style="width:90%;">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Billing Street</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.BillingStreet}" id="billingStreet" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Billing City</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.BillingCity}" id="billingCity" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Billing State/Province</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.BillingState}" id="billingState"  styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Billing Zip/Postal Code</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.BillingPostalCode}" id="billingPostalCode" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="text-input-01">Billing Country</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputField value="{!account.BillingCountry}" id="billingCountry" styleClass="slds-input"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------End------------>
+                        <!------------Footer----------><br/>
+                        <div class="slds-modal__footer">
+                            <apex:commandButton value="Cancel" styleClass="slds-button slds-button--neutral"/>
+                            <apex:commandButton value="Save & New" styleClass="slds-button slds-button--neutral" />
+                            <apex:commandButton value="Save" action="{!Save}"  styleClass="slds-button slds-button--neutral"/>
+                        </div>
+                        <!--------------End----------->
+                    </div>
+                </apex:pageBlock>
+            </apex:form>
+        </body>
+    </html>
+    </apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>SLDS_Dynamic_Lookup_Demo</defaultLandingTab>
+    <description>A component that can be used in Salesforce Lightning Design System VF pages</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>SLDS Dynamic Lookup</label>
+    <tabs>SLDS_Dynamic_Lookup_Demo</tabs>
+    <tabs>Payments__x</tabs>
+</CustomApplication>

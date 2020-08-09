@@ -1,0 +1,86 @@
+<apex:page standardStylesheets="true" applyBodyTag="false" showHeader="false" sidebar="false" docType="html-5.0"  standardController="Contact" extensions="VF_Messages_Abstract,LexForceDemoPageController" >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:slds />
+        </head>
+              
+        <apex:form >
+        
+<script>
+
+function checkMessages() {
+    if (hasMessages) {
+        $('#err_text').html(errorMessage);
+        $('[id$=msg_block]').show();
+    } else {
+        $('[id$=msg_block]').hide();
+    }
+ 
+}
+
+</script>
+       
+       
+
+<div class="slds">
+
+
+
+
+
+<!-- ERROR ALERT DIV -->
+<apex:outputPanel layout="block" id="msg_block" style="display: none;">
+    <div id="err_wrapper"
+         class="slds-notify slds-notify--alert slds-theme--{!alertType} slds-theme--alert-texture"
+         role="alert">
+        <h2>
+            <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <svg aria-hidden="true"
+                     class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small">
+                    <use xlink:href="{!URLFOR($Resource.LDS, '/assets/icons/utility-sprite/svg/symbols.svg#' + if(alertType = 'success','check','ban'))}"></use>
+                </svg>
+                <span id="err_text"></span>
+            </div>
+        </h2>
+    </div>
+ 
+</apex:outputPanel>
+
+
+
+
+
+
+
+
+
+
+<div class="slds-form--stack">
+<apex:outputPanel id="post_processing">
+ 
+    <script>
+ 
+        var hasMessages = {!hasMessages};
+        var errorMessage = "{!errorMessage}";
+        hideProcessing();
+        checkMessages();
+ 
+    </script>
+ 
+</apex:outputPanel>
+                    <c:PCYC_InputField SObject="{!contactObj}" Field="Name"></c:PCYC_InputField>
+                    
+                     <c:PCYC_InputField SObject="{!contactObj}" Field="Birthdate"></c:PCYC_InputField>
+                      <c:PCYC_InputField SObject="{!contactObj}" Field="AccountId"></c:PCYC_InputField>
+                      <c:PCYC_InputField SObject="{!contactObj}" Field="LeadSource"></c:PCYC_InputField>
+                   
+<div class="slds-button-group" role="group">
+<!--<c:lSpinner />  -->
+<c:LoadSpinner />
+                        <apex:commandButton action="{!save}" reRender="post_processing" status="wave" value="Save" id="theSpinner" styleClass="slds-button slds-button--neutral" />
+                        <apex:commandButton action="{!cancel}" value="Cancel"  id="btnCancel" styleClass="slds-button slds-button--neutral "/></div>
+</div>
+</div>
+</apex:form>
+    </html>
+</apex:page>
